@@ -1,19 +1,24 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Header from './header'
+import Main from './main'
+import Dashboard from './dashboard'
+import Profile from './profile'
 
 const Home = () => {
-  const { username } = useParams()
   return (
     <div>
       <Header />
       <div className="flex items-center justify-center h-screen">
-        <div className="bg-indigo-800 text-white font-bold rounded-lg border shadow-lg p-10" id="title">
-          Dashboard { username }
-          <Link to="/dashboard/profile/239c8d29-7ad6-4d56-a4e5-1dcc9abd969e"> Go To Profile </Link>
-          <Link to="/dashboard/main"> Go To Main </Link>
+        <div
+          className="bg-indigo-800 text-white font-bold rounded-lg border shadow-lg p-10"
+          id="title"
+        >
+          <Route exact path="/dashboard/" component={() => <Dashboard />} />
+          <Route exact path="/dashboard/main" component={() => <Main />} />
+          <Route exact path="/dashboard/profile/:username" component={() => <Profile />} />
         </div>
-      </div>      
+      </div>
     </div>
   )
 }
