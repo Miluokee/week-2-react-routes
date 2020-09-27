@@ -1,22 +1,23 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import Header from './header'
 
-import Head from './head'
-
-const Dummy = () => {
+const Profile = () => {
+  const { username } = useParams()
   return (
     <div>
-      <Head title="Hello" />
+      <Header />
       <div className="flex items-center justify-center h-screen">
-        <div className="bg-indigo-800 text-white font-bold rounded-lg border shadow-lg p-10">
-          Profile
-          <Link to="/dashboard"> Go to Dashboard </Link>
+        <div className="bg-indigo-800 text-white font-bold rounded-lg border shadow-lg p-10" id="username">
+          Profile { username }
+          <Link to="/dashboard"> Go To Root </Link>
+          <Link to="/dashboard/main"> Go To Main </Link>
         </div>
       </div>
     </div>
   )
 }
 
-Dummy.propTypes = {}
+Profile.propTypes = {}
 
-export default Dummy
+export default Profile
